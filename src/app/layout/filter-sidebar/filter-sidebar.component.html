@@ -1,0 +1,121 @@
+<!-- <aside class="filters">
+  <label><input type="checkbox" /> Customizable</label>
+
+  <div class="filter-group">
+    <h5>IDEAL FOR</h5>
+    <select>
+      <option>All</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <h5>OCCASION</h5>
+    <select>
+      <option>All</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <h5>FABRIC</h5>
+    <select>
+      <option>All</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <h5>SEGMENT</h5>
+    <select>
+      <option>All</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <h5>SUITABLE FOR</h5>
+    <select>
+      <option>All</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <h5>RAW MATERIALS</h5>
+    <select>
+      <option>All</option>
+    </select>
+  </div>
+</aside> -->
+
+<!-- <div class="filter-section" *ngFor="let filter of filters">
+  <div class="filter-header" (click)="toggleSection(filter)">
+    <span>{{ filter.title }}</span>
+    <svg class="filter-arrow" [class.open]="filter.open" width="12" height="12" viewBox="0 0 24 24">
+      <path d="M7 10l5 5 5-5z" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="filter-options" *ngIf="filter.open">
+    <label *ngFor="let option of filter.options">
+      <input type="checkbox" [(ngModel)]="option.checked" />
+      {{ option.label }}
+    </label>
+  </div>
+  <div class="divider-line"></div>
+</div> -->
+
+<!-- <aside class="filters">
+  <div class="customizable-checkbox">
+    <label class="customizable"><input type="checkbox" /> CUSTOMIZABLE</label>
+  </div>
+
+  <div class="filter-group" *ngFor="let filter of filters; let i = index">
+    <div class="filter-header" (click)="toggleFilter(i)">
+      <h5>{{ filter.title }}</h5>
+      <svg
+        class="arrow-icon"
+        [class.open]="filter.open"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+      >
+        <path d="M7 10l5 5 5-5z" fill="currentColor" />
+      </svg>
+    </div>
+
+    <div class="filter-body" *ngIf="filter.open">
+      <select>
+      <option>All</option>
+      </select>
+    </div>
+
+    <div class="divider-line"></div>
+  </div>
+</aside> -->
+
+<aside class="filters" [class.visible]="visible">
+  <div class="filter-group" *ngFor="let filter of filters; let i = index">
+    <div class="filter-header" (click)="toggleFilter(i)">
+      <h5>{{ filter.title }}</h5>
+      <img
+        class="arrow-icon"
+        [class.open]="filter.open"
+        src="assets/arrow-down.svg"
+        alt="Site Logo"
+        width="12"
+        height="12"
+      />
+    </div>
+
+    <div class="filter-option">All</div>
+    <div class="filter-body" *ngIf="filter.open">
+      <div class="unselect-all">Unselect all</div>
+      <label *ngFor="let option of filter.options" class="checkbox-label">
+        <input
+          type="checkbox"
+          [(ngModel)]="option.checked"
+          (change)="onCategoryChange()"
+        />
+        {{ option.label }}
+      </label>
+    </div>
+
+    <div class="divider-line"></div>
+  </div>
+</aside>

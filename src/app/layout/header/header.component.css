@@ -1,0 +1,153 @@
+.header {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 15px 55px;
+}
+
+.left,
+.right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-text {
+  font-size: 36px;
+  font-weight: 800;
+  color: black;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: black;
+  cursor: pointer;
+}
+
+.header-nav {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-tabs li {
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.nav-tabs li:hover {
+  color: #ffcc00;
+}
+
+.line {
+  margin-top: 14px;
+  border-bottom: 1px solid lightgray;
+}
+
+.hamburger {
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    padding: 0px 10px;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
+.mini-overlay {
+  position: absolute;
+  top: 60px;
+  left: 15px;
+  z-index: 1000;
+}
+
+.mini-overlay-box {
+  background-color: white;
+  border: 1px solid lightgray;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 200px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-tabs li {
+  padding: 10px 0;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.mobile-tabs li:last-child {
+  border-bottom: none;
+}
+
+.close-btn {
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,57 @@
+<div class="main-layout">
+  <app-header></app-header>
+  <app-banner></app-banner>
+
+  <div class="product-section-wrapper">
+    <div class="product-grid-header">
+      <div class="left-info">
+        <span>3425 ITEMS</span>
+        <span class="toggleFilters" (click)="toggleFilters()">
+          <img
+            *ngIf="!showFilters"
+            src="assets/arrow-right.svg"
+            alt="profile logo"
+            width="12"
+            height="12"
+          />
+          <img
+            *ngIf="showFilters"
+            src="assets/arrow-left.svg"
+            alt="profile logo"
+            width="12"
+            height="12"
+          />
+          {{ showFilters ? "HIDE FILTER" : "SHOW FILTER" }}
+        </span>
+      </div>
+
+      <div class="sort-dropdown">
+        <div class="custom-select">
+          <select [(ngModel)]="selectedSort">
+            <option value="recommended">RECOMMENDED</option>
+            <option value="byRating">BY RATING</option>
+            <option value="priceHigh">PRICE : HIGH TO LOW</option>
+            <option value="priceLow">PRICE : LOW TO HIGH</option>
+          </select>
+          <img
+            class="arrow-icon"
+            src="assets/arrow-down.svg"
+            alt="profile logo"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <app-filter-sidebar
+      *ngIf="showFilters"
+      [visible]="showFilters"
+      (categoryFilterChanged)="onFilterChange($event)"
+    ></app-filter-sidebar>
+    <app-product-grid
+      [sortBy]="selectedSort"
+      [selectedCategories]="selectedCategories"
+    ></app-product-grid>
+  </div>
+</div>

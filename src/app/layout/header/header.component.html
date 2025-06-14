@@ -1,0 +1,119 @@
+<!-- <header class="header">
+  <div class="header-top">
+    
+    <div class="left">
+      <img src="assets/Logo.svg" alt="Site Logo" width="30" height="30" />
+    </div>
+
+    
+    <div class="center">
+      <span class="logo-text">LOGO</span>
+    </div>
+
+    
+    <div class="right">
+      <img src="assets/search-normal.svg" alt="search-normal logo" />
+      <img src="assets/heart.svg" alt="heart logo" />
+      <img src="assets/shopping-bag.svg" alt="shopping-bag logo" />
+      <img src="assets/profile.svg" alt="profile logo" />
+    </div>
+  </div>
+
+
+  <nav class="header-nav">
+    <ul class="nav-tabs">
+      <li>SHOP</li>
+      <li>SKILLS</li>
+      <li>STORIES</li>
+      <li>ABOUT US</li>
+      <li>CONTACT US</li>
+    </ul>
+  </nav>
+  <div class="line"></div>
+</header> -->
+
+<!-- <header class="header">
+  <div class="header-top">
+    <div class="left">
+      <div class="hamburger" (click)="toggleMobileMenu()">☰</div>
+      <img src="assets/Logo.svg" alt="Site Logo" width="30" height="30" />
+    </div>
+
+    <div class="center">
+      <span class="logo-text">LOGO</span>
+    </div>
+
+    <div class="right">
+      <img src="assets/search-normal.svg" alt="search-normal logo" />
+      <img src="assets/heart.svg" alt="heart logo" />
+      <img src="assets/shopping-bag.svg" alt="shopping-bag logo" />
+      <img src="assets/profile.svg" alt="profile logo" />
+    </div>
+  </div>
+
+  <nav class="header-nav desktop-nav">
+    <ul class="nav-tabs">
+      <li>SHOP</li>
+      <li>SKILLS</li>
+      <li>STORIES</li>
+      <li>ABOUT US</li>
+      <li>CONTACT US</li>
+    </ul>
+  </nav>
+
+  <nav class="mobile-nav" *ngIf="mobileMenuOpen">
+    <ul class="mobile-tabs">
+      <li>SHOP</li>
+      <li>SKILLS</li>
+      <li>STORIES</li>
+      <li>ABOUT US</li>
+      <li>CONTACT US</li>
+    </ul>
+  </nav>
+
+  <div class="line"></div>
+</header> -->
+
+<header class="header">
+  <div class="header-top">
+    <div class="left">
+      <div class="hamburger" (click)="toggleMobileMenu()">☰</div>
+      <img src="assets/Logo.svg" alt="Site Logo" width="30" height="30" />
+    </div>
+
+    <div class="center">
+      <span class="logo-text">LOGO</span>
+    </div>
+
+    <div class="right">
+      <img src="assets/search-normal.svg" alt="search" />
+      <img src="assets/heart.svg" alt="like" />
+      <img src="assets/shopping-bag.svg" alt="bag" />
+      <img src="assets/profile.svg" alt="profile" />
+    </div>
+  </div>
+
+  <nav class="header-nav desktop-nav">
+    <ul class="nav-tabs">
+      <li>SHOP</li>
+      <li>SKILLS</li>
+      <li>STORIES</li>
+      <li>ABOUT US</li>
+      <li>CONTACT US</li>
+    </ul>
+  </nav>
+  <div class="line"></div>
+
+  <div class="mini-overlay" *ngIf="mobileMenuOpen">
+    <div class="mini-overlay-box">
+      <span class="close-btn" (click)="toggleMobileMenu()">×</span>
+      <ul class="mobile-tabs">
+        <li>SHOP</li>
+        <li>SKILLS</li>
+        <li>STORIES</li>
+        <li>ABOUT US</li>
+        <li>CONTACT US</li>
+      </ul>
+    </div>
+  </div>
+</header>

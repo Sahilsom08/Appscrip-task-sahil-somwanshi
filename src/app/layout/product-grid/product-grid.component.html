@@ -1,0 +1,34 @@
+<div class="product-grid-wrapper">
+  <div class="product-grid">
+    <div class="card" *ngFor="let product of sortedProducts">
+      <div class="product-img">
+        <img [src]="product.image" [alt]="product.title" />
+        <span class="rating" *ngIf="product.rating?.rate"
+          >Rating: {{ product.rating?.rate }}</span
+        >
+      </div>
+      <div class="product-info">
+        <h6 class="title">{{ product.title }}</h6>
+        <div class="detail">
+          <span>Price: ${{ product.price }}</span>
+          <img
+            src="assets/heart.svg"
+            [src]="product.liked ? 'assets/red-heart.svg' : 'assets/heart.svg'"
+            alt="like"
+            height="12"
+            width="12"
+            (click)="toggleLike(product)"
+            style="cursor: pointer"
+          />
+        </div>
+        <p [title]="product.description">
+          {{
+            product.description.length > 80
+              ? (product.description | slice : 0 : 80) + "..."
+              : product.description
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
