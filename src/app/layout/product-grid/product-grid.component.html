@@ -4,7 +4,7 @@
       <div class="product-img">
         <img [src]="product.image" [alt]="product.title" />
         <span class="rating" *ngIf="product.rating?.rate"
-          >Rating: {{ product.rating?.rate }}</span
+          >Rating: {{ product.rating.rate }}</span
         >
       </div>
       <div class="product-info">
@@ -12,7 +12,6 @@
         <div class="detail">
           <span>Price: ${{ product.price }}</span>
           <img
-            src="assets/heart.svg"
             [src]="product.liked ? 'assets/red-heart.svg' : 'assets/heart.svg'"
             alt="like"
             height="12"

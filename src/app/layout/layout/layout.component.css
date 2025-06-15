@@ -15,7 +15,8 @@
   margin-left: 1rem;
   cursor: pointer;
   text-decoration: underline;
-  color: #333;
+  color: #888792;
+  font-size: 12px;
 }
 
 .sort-dropdown select {
@@ -62,13 +63,13 @@ app-product-grid {
   cursor: pointer;
 }
 
-.arrow-icon {
+/* .arrow-icon {
   position: absolute;
   right: 30px;
   top: 50%;
   pointer-events: none;
   transform: translateY(-50%);
-}
+} */
 
 @media (max-width: 768px) {
   .content {
@@ -78,4 +79,51 @@ app-product-grid {
   .product-section-wrapper {
     padding: 0px 10px;
   }
+  .custom-dropdown {
+    width: 80%;
+    font-size: 14px;
+  }
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 150px;
+  background-color: white;
+  padding: 10px 40px 10px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.custom-dropdown .arrow-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  pointer-events: none;
+  transform: translateY(-50%);
+  width: 12px;
+}
+
+.custom-dropdown .dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  margin-top: 2px;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-list li:hover {
+  background-color: #f0f0f0;
 }

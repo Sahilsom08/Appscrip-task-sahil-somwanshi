@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class FilterSidebarComponent {
   @Input() visible = true;
+  @Output() categoryFilterChanged = new EventEmitter<string[]>();
 
   isMobileView = false;
   filters = [
@@ -53,8 +54,6 @@ export class FilterSidebarComponent {
   checkViewport() {
     this.isMobileView = window.innerWidth <= 768;
   }
-
-  @Output() categoryFilterChanged = new EventEmitter<string[]>();
 
   onCategoryChange() {
     const selectedCategories = this.filters[0].options

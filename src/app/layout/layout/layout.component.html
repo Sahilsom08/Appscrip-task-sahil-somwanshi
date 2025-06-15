@@ -5,7 +5,7 @@
   <div class="product-section-wrapper">
     <div class="product-grid-header">
       <div class="left-info">
-        <span>3425 ITEMS</span>
+        <span>{{ totalProducts }} ITEMS</span>
         <span class="toggleFilters" (click)="toggleFilters()">
           <img
             *ngIf="!showFilters"
@@ -25,20 +25,20 @@
         </span>
       </div>
 
-      <div class="sort-dropdown">
-        <div class="custom-select">
-          <select [(ngModel)]="selectedSort">
-            <option value="recommended">RECOMMENDED</option>
-            <option value="byRating">BY RATING</option>
-            <option value="priceHigh">PRICE : HIGH TO LOW</option>
-            <option value="priceLow">PRICE : LOW TO HIGH</option>
-          </select>
-          <img
-            class="arrow-icon"
-            src="assets/arrow-down.svg"
-            alt="profile logo"
-          />
-        </div>
+      <div
+        class="custom-dropdown"
+        (click)="toggleDropdown()"
+        [class.open]="dropdownOpen"
+      >
+        <div class="selected-option">{{ getLabel(selectedSort) }}</div>
+        <img src="assets/arrow-down.svg" class="arrow-icon" alt="arrow" />
+
+        <ul *ngIf="dropdownOpen" class="dropdown-list">
+          <li (click)="selectSort('recommended')">RECOMMENDED</li>
+          <li (click)="selectSort('byRating')">BY RATING</li>
+          <li (click)="selectSort('priceHigh')">PRICE : HIGH TO LOW</li>
+          <li (click)="selectSort('priceLow')">PRICE : LOW TO HIGH</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -52,6 +52,9 @@
     <app-product-grid
       [sortBy]="selectedSort"
       [selectedCategories]="selectedCategories"
+      (productCount)="getProductCount($event)"
     ></app-product-grid>
   </div>
+
+  <app-footer></app-footer>
 </div>

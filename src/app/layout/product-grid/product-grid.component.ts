@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../interface/data';
 import { DataService } from '../../services/data.service';
@@ -14,7 +14,7 @@ import { DataService } from '../../services/data.service';
 export class ProductGridComponent {
   showFilters = true;
   @Input() sortBy = 'recommended';
-  @Input() filerBy = '';
+  @Output() productCount = new EventEmitter<number>();
   @Input() selectedCategories: string[] = [];
   public products: Product[] = [];
   public productsBackup: Product[] = [];
@@ -29,6 +29,29 @@ export class ProductGridComponent {
     this.showFilters = !this.showFilters;
   }
 
+  // get sortedProducts() {
+  //   let products = this.productsBackup;
+
+  //   if (this.selectedCategories && this.selectedCategories.length > 0) {
+  //     products = products.filter((p) =>
+  //       this.selectedCategories.includes(p.category)
+  //     );
+  //   }
+
+  //   switch (this.sortBy) {
+  //     case 'byRating':
+  //       return products
+  //         .slice()
+  //         .sort((a, b) => (b.rating?.rate ?? 0) - (a.rating?.rate ?? 0));
+  //     case 'priceHigh':
+  //       return products.slice().sort((a, b) => b.price - a.price);
+  //     case 'priceLow':
+  //       return products.slice().sort((a, b) => a.price - b.price);
+  //     default:
+  //       return products;
+  //   }
+  // }
+
   get sortedProducts() {
     let products = this.productsBackup;
 
@@ -38,18 +61,27 @@ export class ProductGridComponent {
       );
     }
 
+    let sorted: any[] = [];
+
     switch (this.sortBy) {
       case 'byRating':
-        return products
+        sorted = products
           .slice()
           .sort((a, b) => (b.rating?.rate ?? 0) - (a.rating?.rate ?? 0));
+        break;
       case 'priceHigh':
-        return products.slice().sort((a, b) => b.price - a.price);
+        sorted = products.slice().sort((a, b) => b.price - a.price);
+        break;
       case 'priceLow':
-        return products.slice().sort((a, b) => a.price - b.price);
+        sorted = products.slice().sort((a, b) => a.price - b.price);
+        break;
       default:
-        return products;
+        sorted = products;
+        break;
     }
+
+    this.productCount.emit(sorted.length);
+    return sorted;
   }
 
   private getAllProducts() {
@@ -60,6 +92,7 @@ export class ProductGridComponent {
           liked: false,
         }));
         this.products = [...this.productsBackup];
+        this.productCount.emit(this.products.length);
       },
       error: (err) => console.error('Error fetching products:', err),
     });
